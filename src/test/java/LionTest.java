@@ -31,19 +31,13 @@ public class LionTest {
         assertEquals(3, kittens);
     }
 
-    //тест проверяет, что наличия гривы у льва работает корректно: самец имеет гриву
+    //тест проверяет, что наличия гривы у льва работает корректно: самец имеет гриву, а самка — нет.
 
     @Test
-    public void testMaleLionHasMane() throws Exception {
+    public void testDoesHaveMane() throws Exception {
         Lion lionMale = new Lion("Самец", mockFeline);
-        assertTrue(lionMale.doesHaveMane());
-    }
-
-    //тест проверяет, что наличия гривы у льва работает корректно: а самка — нет
-
-    @Test
-    public void testLionessWithoutMane() throws Exception {
         Lion lionFemale = new Lion("Самка", mockFeline);
+        assertTrue(lionMale.doesHaveMane());
         assertFalse(lionFemale.doesHaveMane());
     }
 
@@ -51,7 +45,7 @@ public class LionTest {
 
     @Test
     public void testGetFood() throws Exception {
-        List<String> expectedFood = Arrays.asList("Животные", "Птицы", "Рыба");
+        List<String> expectedFood = Arrays.asList("Животные", "Птицы", "Рыбы");
         when(mockFeline.getFood("Хищник")).thenReturn(expectedFood);
         Lion lion = new Lion("Самец", mockFeline);
         List<String> food = lion.getFood();
